@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圖片壓縮 - 簡約而強大</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>圖片壓縮</h1>
+            <p class="subtitle">簡單、快速、高品質的圖片壓縮工具</p>
+        </header>
+
+        <main>
+            <div class="upload-container">
+                <div class="upload-area" id="dropZone">
+                    <input type="file" id="fileInput" accept="image/*" multiple hidden>
+                    <svg class="upload-icon" viewBox="0 0 24 24">
+                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                    </svg>
+                    <p>拖放多張圖片到這裡或點擊上傳</p>
+                </div>
+            </div>
+
+            <div class="comparison-container" id="comparisonContainer" style="display: none;">
+                <div class="image-card original">
+                    <h3>原始圖片</h3>
+                    <div class="image-preview">
+                        <img id="originalPreview" alt="原始圖片預覽">
+                    </div>
+                    <div class="image-info">
+                        <p>大小: <span id="originalSize">0 KB</span></p>
+                        <p>尺寸: <span id="originalDimensions">0 x 0</span></p>
+                    </div>
+                </div>
+
+                <div class="compression-controls">
+                    <div class="quality-slider">
+                        <label for="quality">壓縮品質</label>
+                        <input type="range" id="quality" min="0" max="100" value="80">
+                        <span id="qualityValue">80%</span>
+                    </div>
+                    <button id="compressBtn" class="primary-button">壓縮圖片</button>
+                </div>
+
+                <div class="image-card compressed">
+                    <h3>壓縮後</h3>
+                    <div class="image-preview">
+                        <img id="compressedPreview" alt="壓縮後預覽">
+                    </div>
+                    <div class="image-info">
+                        <p>大小: <span id="compressedSize">0 KB</span></p>
+                        <p>尺寸: <span id="compressedDimensions">0 x 0</span></p>
+                    </div>
+                    <button id="downloadBtn" class="secondary-button" disabled>下載壓縮圖片</button>
+                </div>
+            </div>
+
+            <div class="batch-progress" id="batchProgress" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress" id="progressBar"></div>
+                </div>
+                <p>處理進度: <span id="progressText">0/0</span></p>
+            </div>
+
+            <div class="images-list" id="imagesList" style="display: none;">
+                <div class="list-header">
+                    <h3>待處理圖片</h3>
+                    <div class="batch-actions">
+                        <button id="startBatchBtn" class="primary-button">開始批量處理</button>
+                        <button id="clearAllBtn" class="secondary-button">清除全部</button>
+                    </div>
+                </div>
+                <div class="images-grid" id="imagesGrid"></div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
